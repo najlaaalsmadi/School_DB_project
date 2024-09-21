@@ -127,23 +127,62 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StudentDetailsController.cs" />
+    <Compile Include="Controllers\StudentClassesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202409182150213_InitialCreate.cs" />
-    <Compile Include="Migrations\202409182150213_InitialCreate.Designer.cs">
-      <DependentUpon>202409182150213_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202409211548476_InitialMigration123.cs" />
+    <Compile Include="Migrations\202409211548476_InitialMigration123.Designer.cs">
+      <DependentUpon>202409211548476_InitialMigration123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211630362_UpdateCascadeBehavior898.cs" />
+    <Compile Include="Migrations\202409211630362_UpdateCascadeBehavior898.Designer.cs">
+      <DependentUpon>202409211630362_UpdateCascadeBehavior898.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211633394_UpdateCascadeBehavior89812.cs" />
+    <Compile Include="Migrations\202409211633394_UpdateCascadeBehavior89812.Designer.cs">
+      <DependentUpon>202409211633394_UpdateCascadeBehavior89812.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211647271_UpdateCascadeBehavior8981211.cs" />
+    <Compile Include="Migrations\202409211647271_UpdateCascadeBehavior8981211.Designer.cs">
+      <DependentUpon>202409211647271_UpdateCascadeBehavior8981211.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211650484_UpdateCascadeBehavior89812111111.cs" />
+    <Compile Include="Migrations\202409211650484_UpdateCascadeBehavior89812111111.Designer.cs">
+      <DependentUpon>202409211650484_UpdateCascadeBehavior89812111111.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211657023_UpdateCascadeBehavior8981211111114.cs" />
+    <Compile Include="Migrations\202409211657023_UpdateCascadeBehavior8981211111114.Designer.cs">
+      <DependentUpon>202409211657023_UpdateCascadeBehavior8981211111114.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211704016_UpdateCascadeBehavior89812111111141.cs" />
+    <Compile Include="Migrations\202409211704016_UpdateCascadeBehavior89812111111141.Designer.cs">
+      <DependentUpon>202409211704016_UpdateCascadeBehavior89812111111141.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211709131_Upseed.cs" />
+    <Compile Include="Migrations\202409211709131_Upseed.Designer.cs">
+      <DependentUpon>202409211709131_Upseed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409211720268_Upseed111.cs" />
+    <Compile Include="Migrations\202409211720268_Upseed111.Designer.cs">
+      <DependentUpon>202409211720268_Upseed111.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PasswordHasher.cs" />
     <Compile Include="Models\School_DB_project.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentClass.cs" />
     <Compile Include="Models\StudentDetails.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,6 +223,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="img\logoimg.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,26 +238,29 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Courses\Create.cshtml" />
-    <Content Include="Views\Courses\Delete.cshtml" />
-    <Content Include="Views\Courses\Details.cshtml" />
-    <Content Include="Views\Courses\Edit.cshtml" />
-    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Classes\Delete.cshtml" />
+    <Content Include="Views\Classes\Edit.cshtml" />
+    <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\StudentDetails\Create.cshtml" />
-    <Content Include="Views\StudentDetails\Delete.cshtml" />
-    <Content Include="Views\StudentDetails\Details.cshtml" />
-    <Content Include="Views\StudentDetails\Edit.cshtml" />
-    <Content Include="Views\StudentDetails\Index.cshtml" />
-    <Content Include="Views\Teachers\Create.cshtml" />
-    <Content Include="Views\Teachers\Delete.cshtml" />
-    <Content Include="Views\Teachers\Details.cshtml" />
-    <Content Include="Views\Teachers\Edit.cshtml" />
-    <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\StudentClasses\Create.cshtml" />
+    <Content Include="Views\StudentClasses\Delete.cshtml" />
+    <Content Include="Views\StudentClasses\Edit.cshtml" />
+    <Content Include="Views\StudentClasses\Index.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Delete.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -250,8 +293,32 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202409182150213_InitialCreate.resx">
-      <DependentUpon>202409182150213_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202409211548476_InitialMigration123.resx">
+      <DependentUpon>202409211548476_InitialMigration123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211630362_UpdateCascadeBehavior898.resx">
+      <DependentUpon>202409211630362_UpdateCascadeBehavior898.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211633394_UpdateCascadeBehavior89812.resx">
+      <DependentUpon>202409211633394_UpdateCascadeBehavior89812.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211647271_UpdateCascadeBehavior8981211.resx">
+      <DependentUpon>202409211647271_UpdateCascadeBehavior8981211.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211650484_UpdateCascadeBehavior89812111111.resx">
+      <DependentUpon>202409211650484_UpdateCascadeBehavior89812111111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211657023_UpdateCascadeBehavior8981211111114.resx">
+      <DependentUpon>202409211657023_UpdateCascadeBehavior8981211111114.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211704016_UpdateCascadeBehavior89812111111141.resx">
+      <DependentUpon>202409211704016_UpdateCascadeBehavior89812111111141.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211709131_Upseed.resx">
+      <DependentUpon>202409211709131_Upseed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409211720268_Upseed111.resx">
+      <DependentUpon>202409211720268_Upseed111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

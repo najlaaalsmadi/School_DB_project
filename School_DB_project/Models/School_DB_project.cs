@@ -35,6 +35,24 @@ namespace School_DB_project.Models
                     cs.MapRightKey("CourseId");
                     cs.ToTable("StudentCourse");
                 });
+
+            // علاقة Many-to-One بين Task و Course مع منع الحذف المتتابع
+            modelBuilder.Entity<Task>()
+                .HasRequired(t => t.Course)
+                .WithMany(c => c.Tasks)
+                .HasForeignKey(t => t.CourseId)
+                .WillCascadeOnDelete(false);  // منع الحذف المتتابع
+
+            // علاقات أخرى...
+
+            base.OnModelCreating(modelBuilder);
         }
+
+
+        public System.Data.Entity.DbSet<School_DB_project.Models.Class> Classes { get; set; }
+
+        public System.Data.Entity.DbSet<School_DB_project.Models.StudentClass> StudentClasses { get; set; }
+
+        public System.Data.Entity.DbSet<School_DB_project.Models.Task> Tasks { get; set; }
     }
 }

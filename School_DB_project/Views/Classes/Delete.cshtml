@@ -1,0 +1,73 @@
+﻿@model School_DB_project.Models.Class
+
+@{
+    ViewBag.Title = "حذف";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4>تأكيد الحذف</h4>
+                </div>
+                <div class="card-body">
+                    <h3>هل أنت متأكد أنك تريد حذف هذا الصف؟</h3>
+                    <div>
+                        <h4>تفاصيل الصف</h4>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>اسم المعلم:</dt>
+                            <dd>@Html.DisplayFor(model => model.Teacher.Name)</dd>
+
+                            <dt>اسم الصف:</dt>
+                            <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                            <dt>الموقع:</dt>
+                            <dd>@Html.DisplayFor(model => model.Location)</dd>
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color text-center">
+                                <button type="button" class="btn btn-danger btn-lg" id="deleteBtn">حذف</button>
+                                |
+                                @Html.ActionLink("العودة إلى القائمة", "Index", null, new { @class = "btn btn-link" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("deleteBtn").addEventListener("click", function () {
+        swal({
+            title: "هل أنت متأكد؟",
+            text: "لا يمكن التراجع عن هذا الحذف و بهذا الحذف سوف يتم حذف طلاب المسجلين في هذا الصف!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    document.forms[0].submit(); // إرسال النموذج
+                } else {
+                    swal("تم إلغاء الحذف.");
+                }
+            });
+    });
+</script>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

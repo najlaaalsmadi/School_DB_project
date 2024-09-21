@@ -1,39 +1,36 @@
 ﻿@model IEnumerable<School_DB_project.Models.Course>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "قائمة الدورات";
 }
 
-<h2>Index</h2>
+<h2 class="text-primary">قائمة الدورات</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("إضافة دورة جديدة", "Create", null, new { @class = "btn btn-primary mb-3" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Teacher.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Teacher.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CourseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseId })
-        </td>
-    </tr>
-}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>اسم المعلم: </strong>@Html.DisplayFor(modelItem => item.Teacher.Name)</p>
+                    <p class="card-text"><strong>اسم الماده: </strong>@Html.DisplayFor(modelItem => item.Name)</p>
 
-</table>
+
+
+
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.CourseId }, new { @class = "btn btn-warning btn-sm mx-1" })
+                    @Html.ActionLink("حذف", "Delete", new { id = item.CourseId }, new { @class = "btn btn-danger btn-sm mx-1" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -18,5 +18,7 @@ namespace School_DB_project.Models
 
         // علاقة Many-to-Many مع Student
         public virtual ICollection<Student> Students { get; set; }
+        // علاقة One-to-Many مع Task
+        public virtual ICollection<Task> Tasks { get; set; }  // أضف العلاقة العكسية
     }
 }

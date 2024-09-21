@@ -1,0 +1,41 @@
+﻿@model School_DB_project.Models.StudentClass
+
+@{
+    ViewBag.Title = "إضافة طالب إلى " + ViewBag.ClassName;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>إضافة طالب إلى الصف</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- حقل مخفي للـ ClassId -->
+        @Html.HiddenFor(model => model.ClassId)
+
+        <!-- قائمة الطلاب -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentId, "الطالب", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StudentId, ViewBag.StudentId as SelectList, "اختر طالب", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- زر الإرسال -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="إضافة طالب" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("العودة إلى القائمة", "Index", new { classId = Model.ClassId }, new { @class = "btn btn-secondary" })
+</div>

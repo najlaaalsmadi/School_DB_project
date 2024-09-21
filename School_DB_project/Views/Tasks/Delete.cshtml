@@ -1,0 +1,42 @@
+﻿@model School_DB_project.Models.Task
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<h2>حذف</h2>
+
+<h3>هل أنت متأكد أنك تريد حذف هذا؟</h3>
+<div>
+    <h4>تفاصيل المهمة</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>اسم الصف:</dt>
+        <dd>@Html.DisplayFor(model => model.Class.Name)</dd>
+
+        <dt>اسم المادة:</dt>
+        <dd>@Html.DisplayFor(model => model.Course.Name)</dd>
+
+        <dt>اسم الطالب:</dt>
+        <dd>@Html.DisplayFor(model => model.Student.Name)</dd>
+
+        <dt>عنوان المهمة:</dt>
+        <dd>@Html.DisplayFor(model => model.Title)</dd>
+
+        <dt>وصف المهمة:</dt>
+        <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+        <dt>تاريخ الاستحقاق:</dt>
+        <dd>@Model.DueDate.ToString("yyyy/MM/dd")</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة إلى القائمة", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

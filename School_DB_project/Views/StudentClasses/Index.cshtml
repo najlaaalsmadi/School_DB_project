@@ -1,0 +1,46 @@
+﻿@model IEnumerable<School_DB_project.Models.StudentClass>
+
+@{
+    ViewBag.Title = "قائمة الطلاب في الصف";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Class.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Name)
+            </th>
+            <th style="width: 150px;">الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.StudentClassId }, new { @class = "btn btn-sm btn-warning" })
+                    <br />                    <br />
+
+                    @Html.ActionLink("إضافة طالب جديد", "Create", new { classId = item.ClassId }, new { @class = "btn btn-primary" })
+
+                    <br />                    <br />
+
+
+                    @Html.ActionLink("حذف", "Delete", new { id = item.StudentClassId }, new { @class = "btn btn-sm btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

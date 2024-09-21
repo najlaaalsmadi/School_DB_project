@@ -1,0 +1,59 @@
+﻿@model IEnumerable<School_DB_project.Models.Task>
+@using System.Linq
+@using School_DB_project.Models;
+
+@{
+    ViewBag.Title = "المهام";
+}
+
+<h2 class="text-center my-4">قائمة المهام</h2>
+
+<p class="text-end">
+    @Html.ActionLink("إضافة مهمة جديدة", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+
+
+<!-- Tasks table -->
+<table class="table table-striped table-bordered mt-4">
+    <thead class="table-dark text-center">
+        <tr>
+            <th class="text-end">اسم الصف</th>
+            <th class="text-end">المادة</th>
+            <th class="text-end">الطالب</th>
+            <th class="text-end">عنوان المهمة</th>
+            <th class="text-end">وصف المهمة</th>
+            <th class="text-end">تاريخ الاستحقاق</th>
+            <th class="text-end">الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Class.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Course.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Student.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@item.DueDate.ToString("yyyy/MM/dd")</td>
+                <td class="text-center">
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.TaskId }, new { @class = "btn btn-sm btn-primary" }) 
+
+                    
+                    @Html.ActionLink("حذف", "Delete", new { id = item.TaskId }, new { @class = "btn btn-sm btn-danger" }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function filterByClass(classId) {
+        var url = '@Url.Action("Index", "Tasks")' + '?classId=' + classId;
+        window.location.href = url;
+    }
+</script>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
